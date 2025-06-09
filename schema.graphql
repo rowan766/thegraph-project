@@ -1,0 +1,28 @@
+type Deposit @entity(immutable: true) {
+  id: Bytes!
+  Sender: Bytes! # address
+  Value: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type fallbackCalled @entity(immutable: true) {
+  id: Bytes!
+  Sender: Bytes! # address
+  Value: BigInt! # uint256
+  Data: Bytes! # bytes
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type receivedCalled @entity(immutable: true) {
+  id: Bytes!
+  Sender: Bytes! # address
+  Value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

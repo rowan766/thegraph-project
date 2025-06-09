@@ -1,0 +1,32 @@
+specVersion: 1.3.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: MyContract
+    network: sepolia
+    source:
+      address: "0xa371986086b59d7995286daa36662a1b58610be7"
+      abi: MyContract
+      startBlock: 8511945
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.9
+      language: wasm/assemblyscript
+      entities:
+        - Deposit
+        - fallbackCalled
+        - receivedCalled
+      abis:
+        - name: MyContract
+          file: ./abis/MyContract.json
+      eventHandlers:
+        - event: Deposit(address,uint256,uint256)
+          handler: handleDeposit
+        - event: fallbackCalled(address,uint256,bytes)
+          handler: handlefallbackCalled
+        - event: receivedCalled(address,uint256)
+          handler: handlereceivedCalled
+      file: ./src/my-contract.ts
